@@ -1,0 +1,21 @@
+Current configuration : 1842 bytes
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+hostname SW-Floor1
+no ip routing
+vlan 10
+ name STAFF
+vlan 20
+ name GUEST
+!
+interface Fa0/1
+ no shutdown
+ switchport mode access
+ switchport access vlan 10
+!
+interface Fa0/2
+ no shutdown
+ switchport mode access
+ switchport access vlan 20
+end
