@@ -4,8 +4,6 @@ _Level: Easy — BuildTheNet 3D Sandbox troubleshooting — VLANs_
 
 **Status: Verified.** Completed; every requirement was machine-checked against the network built in BuildTheNet and passed.
 
-> This snapshot was taken after completion and has changed since: 2 requirements no longer pass as it stands now.
-
 Snapshot taken 2026-11-14. Built in a simulation — no physical or production equipment was involved.
 
 ## The ticket
@@ -24,24 +22,34 @@ Get PC-A and PC-B talking again, with both desks in the STAFF VLAN.
 
 | # | Check | Status | Checked by |
 |---|---|---|---|
-| 1 | PC-A to PC-B works | Not yet passing | Sandbox check |
+| 1 | PC-A to PC-B works | Passed | Sandbox check |
 | 2 | PC-A keeps its documented addressing | Passed | Sandbox check |
 | 3 | PC-B keeps its documented addressing | Passed | Sandbox check |
-| 4 | The ticket's service requirement is met | Not yet passing | Sandbox check |
+| 4 | The ticket's service requirement is met | Passed | Sandbox check |
 
 ## Root cause
 
 SW-Floor1 Fa0/2 was left in VLAN 20 while Fa0/1 is in VLAN 10.
 
-## Changes so far
+## The fix
 
-Nothing on the canvas differs from the starting topology.
+What was changed to resolve the ticket, compared with the network as it was reported:
+
+Compared with the starting topology, the learner changed the configuration of 1 device.
+
+**SW-Floor1**
+
+```diff
+  interface Fa0/2
+-  switchport access vlan 20
++  switchport access vlan 10
+```
 
 ## Result
 
-Not resolved on this snapshot yet:
+Every check passed on this snapshot:
 
-> The hosts reach each other, but SW-Floor1 Fa0/2 is in VLAN 20. STAFF desks belong in VLAN 10 (STAFF), not the guest VLAN.
+> Both desks are back in the STAFF VLAN and reach each other.
 
 ## Topology
 

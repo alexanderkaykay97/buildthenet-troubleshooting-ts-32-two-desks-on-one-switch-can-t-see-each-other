@@ -17,5 +17,5 @@ interface Fa0/1
 interface Fa0/2
  no shutdown
  switchport mode access
- switchport access vlan 20
+ switchport access vlan 10
 end
